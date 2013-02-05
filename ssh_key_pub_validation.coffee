@@ -1,4 +1,4 @@
-isKeyValid: (rawKey) ->
+isKeyValid = (rawKey) ->
 
   getBytesAndSplit = (bytes) ->
     sizeLen = 4  # size represent is always 4 bytes in BE
