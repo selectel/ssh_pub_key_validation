@@ -25,8 +25,7 @@ isKeyValid = (rawKey) ->
       result = getBytesAndSplit bytes
       return false if result is false
       [_int, bytes] = result  # and repeat with tail
-    return false if bytes.length != 0  # fail if somethink stay in body
-    return true
+    return bytes.length is 0  # fail if somethink stay in body
 
   # get human type representation, base64 encoded binary body and
   # optional comment
