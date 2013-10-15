@@ -1,0 +1,31 @@
+{
+  "name": "ssh-pub-key-validation",
+  "version": "1.0.0",
+  "description": "Function for validate openssh public key",
+  "main": "lib/ssh_pub_key_validation.js",
+  "scripts": {
+    "build": "coffee --bare --compile --output lib src/ssh_pub_key_validation.coffee",
+    "prepublish": "coffee --bare --compile --output lib src/ssh_pub_key_validation.coffee",
+    "postpublish": "rm -rf lib",
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/selectel/ssh_pub_key_validation.git"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "mocha":         "~1.13.0"
+  },
+  "keywords": [
+    "ssh",
+    "pubkey",
+    "validation",
+    "openssh"
+  ],
+  "author": "Maxim Mitroshin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selectel/ssh_pub_key_validation/issues"
+  }
+}
