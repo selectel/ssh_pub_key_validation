@@ -29,7 +29,7 @@ isKeyValid = (rawKey) ->
 
   # get human type representation, base64 encoded binary body and
   # optional comment
-  keyTokens = $.trim(rawKey).split " "
+  keyTokens = rawKey.trim().split " "
   return false if keyTokens.length < 2  # fail if no type or body
   [humanType, keyBase64, _textTail] = keyTokens
   # fail if format is not supported
@@ -38,6 +38,7 @@ isKeyValid = (rawKey) ->
     # decode base64 body
     keyBytes = atob keyBase64
   catch error
+    console.log(error)
     return false
   # parse binary format type
   typeSizeParse = getBytesAndSplit keyBytes
@@ -49,3 +50,7 @@ isKeyValid = (rawKey) ->
     # and 4 for DSA
     when "ssh-dss" then checkIntregers 4, keyBody
     else false
+
+if typeof module != "undefined" and module.exports
+  atob = require "atob"
+  module.exports.isKeyValid = isKeyValid

@@ -17,6 +17,9 @@
     "coffee-script": "~1.6.3",
     "mocha":         "~1.13.0"
   },
+  "dependencies": {
+    "atob": "~1.1.0"
+  },
   "keywords": [
     "ssh",
     "pubkey",
