@@ -38,7 +38,6 @@ isKeyValid = (rawKey) ->
     # decode base64 body
     keyBytes = atob keyBase64
   catch error
-    console.log(error)
     return false
   # parse binary format type
   typeSizeParse = getBytesAndSplit keyBytes
