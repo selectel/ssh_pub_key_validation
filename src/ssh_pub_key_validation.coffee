@@ -33,7 +33,7 @@ isKeyValid = (rawKey) ->
   return false if keyTokens.length < 2  # fail if no type or body
   [humanType, keyBase64, _textTail] = keyTokens
   # fail if format is not supported
-  return false unless humanType in ["ssh-rsa", "ssh-dss"]
+  return false unless humanType in ["ssh-rsa", "ssh-dss", "ecdsa-sha2-nistp256", "ecdsa-sha2-nistp384", "ecdsa-sha2-nistp521"]
   try
     # decode base64 body
     keyBytes = atob keyBase64
@@ -48,6 +48,8 @@ isKeyValid = (rawKey) ->
     when "ssh-rsa" then checkIntregers 2, keyBody
     # and 4 for DSA
     when "ssh-dss" then checkIntregers 4, keyBody
+    # and 2 for ECDSA-SHA2-* (RFC 5656)
+    when "ecdsa-sha2-nistp256", "ecdsa-sha2-nistp384", "ecdsa-sha2-nistp521" then checkIntregers 2, keyBody
     else false
 
 if typeof module != "undefined" and module.exports
